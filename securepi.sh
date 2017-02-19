@@ -18,7 +18,7 @@ echo "$(tput setaf 1)
 
 $(tput setaf 3)
                      TOR + Raspberry Pi 
-                     ff0x.co/securepi.sh
+                     ff0x.co/raspberrypi-3-onion-router
 
 
 $(tput sgr0)"
