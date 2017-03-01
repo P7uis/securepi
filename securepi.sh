@@ -116,7 +116,6 @@ sudo sh -c "iptables-save > /etc/iptables/rules.v4"
 sudo timeout 2 /usr/sbin/hostapd /etc/hostapd/hostapd.conf
 
 sudo mv /usr/share/dbus-1/system-services/fi.epitest.hostap.WPASupplicant.service ~/
-sudo reboot
 sudo /usr/sbin/hostapd /etc/hostapd/hostapd.conf
 sudo service hostapd start 
 sudo service isc-dhcp-server start
@@ -158,6 +157,7 @@ sudo update-rc.d tor enable
 echo "$(tput setaf 1)
 
                      Your SecurePi is ready for use. 
+		     Please Reboot The Pi First
                      SSID: SecurePi
                      Password: SecurePass
 
