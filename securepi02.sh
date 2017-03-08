@@ -18,10 +18,12 @@ echo "$(tput setaf 1)
 
 $(tput setaf 3)
                      TOR + Raspberry Pi 
-                     ff0x.co/raspberrypi-3-onion-router
 
 
 $(tput sgr0)"
+
+sudo mkdir /securepi
+cd /securepi
 
 
 echo "Installing the Software " 
@@ -30,10 +32,12 @@ sudo apt-get upgrade -y
 sudo apt-get install hostapd isc-dhcp-server -y
 sudo apt-get install iptables-persistent -y
 
-echo "Changing some lines with SED"
+echo "Time to Install TOR"
+sudo apt-get install tor -y
 
-sudo sed -i 's/option domain-name "example.org";/# option domain-name "example.org";/g' /etc/dhcp/dhcpd.conf
-sudo sed -i 's/option domain-name-servers ns1.example.org, ns2.example.org;/# option domain-name-servers ns1.example.org, ns2.example.org;/g' /etc/dhcp/dhcpd.conf
+reboot
+
+
 
 sudo sed -i 's/#authoritative;/#authoritative;/g' /etc/dhcp/dhcpd.conf
 
@@ -126,9 +130,6 @@ sudo service isc-dhcp-server status
 sudo service hostapd status
 
 
-echo "Time to Install TOR"
-sudo apt-get update
-sudo apt-get install tor -y
 
 sudo sed '/## https://www.torproject.org/docs/faq#torrc/Log notice file /var/log/tor/notices.log
 VirtualAddrNetwork 10.192.0.0/10
